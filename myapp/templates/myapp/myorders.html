@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% block title %}My Orders!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+             <div class="col"></div>
+             <div class="col">
+                 {% if myOrders %}
+                    <h1>List of Products</h1>
+                    {% for m in myOrders %}
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ m.Product}}</li>
+                        </ul>
+                    {% endfor %}
+                {% else %}
+                    <strong>There are no orders by you!</strong>
+                {% endif %}
+                </br>
+                <a class="btn btn-danger" href="{% url 'myapp:index' %}">Back</a>
+             </div>
+             <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}

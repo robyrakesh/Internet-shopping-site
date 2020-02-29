@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Details of Product!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+             <div class="col">
+                 {% if product %}
+                    <h2>Product Detail</h2>
+                    <h4>Name: {{product.name}} </h4>
+                    <h4>People Interested: {{product.interested}} </h4>
+                    <h4>Price: {{product.price}} </h4>
+                    {% if product.stock <= 0  %}
+                        <h4>Message: Product Not available</h4>
+                    {% else %}
+                        <h4>Stock: {{ product.stock }}</h4>
+                    {% endif %}
+                {% endif %}
+                <a class="btn btn-primary" type="button" href="../placeorder/{{ product.id }}">Place Order</a>
+             </div>
+             <div class="col">
+                <form action="../products/{{product.id}}" method="post">
+                    {% csrf_token %}
+                    <label>Interested:</label>
+                    {% for choice in form.interested %}
+                       <span class="radio">{{ choice.tag }}</span>
+                       {{ choice.choice_label }}
+                    {% endfor %}
+                    <br/><br/>
+                    <label class="col-form-label">Quantity:</label>
+                        {{ form.quantity }}
+                    <br/><br/>
+                    <label>Additinal Comments:</label>
+                        {{ form.comments }}
+                        <br/>
+                    <div style="margin-left:7em;margin-top:1em;">
+                        <input type="submit" value="Submit" class="save btn btn-primary">
+                    </div>
+                </form>
+             </div>
+             <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}

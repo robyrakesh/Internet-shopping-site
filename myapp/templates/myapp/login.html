@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Login!{% endblock %}
+{% block body_block %}
+    <body>
+        <div class="content">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <h2>Login</h2>
+                    <form action="user_login" method="post">
+                        {% csrf_token %}
+                            <label class="col-form-label">Username:</label>
+                            <input type="text" name="username" id="username" required/><br><br>
+                            <label class="col-form-label">Password:</label>
+                            <input type="password" name="password" id="password" required/><br><br>
+                        <input class="btn btn-primary" type="submit" value="Login"/>
+                        <a class="btn btn-success" value="Register" href="{% url 'myapp:register' %}">Register</a>
+                    </form>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}

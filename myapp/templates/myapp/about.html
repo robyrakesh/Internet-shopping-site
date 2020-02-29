@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% block title %}About!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <h2>This is an Online Store APP</h2>
+                <strong>This app is developed by :</strong>
+                    <ul class="list-group">
+                        <li class="list-group-item text-danger">Arif Ahmed Ayon</li>
+                        <li class="list-group-item text-primary">Nancy Gupta</li>
+                        <li class="list-group-item text-success">Silkita Chauhan</li>
+                        <li class="list-group-item text-secondary">Sowmya Budampati</li>
+                    </ul>
+                <p style="margin-top: 15px">Page visited: {{about_visits}}</p>
+                </br>
+                <a class="btn btn-danger" href="{% url 'myapp:index' %}">Back</a>
+            </div>
+            <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}
+

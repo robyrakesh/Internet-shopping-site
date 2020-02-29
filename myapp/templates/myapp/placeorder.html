@@ -1,0 +1,55 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Place Order!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                {% if prod %}
+                    <h2>Product</h2>
+                    <label>Name</label> : {{ prod.name }}
+                    </br>
+                    <label>Stoke</label> : {{prod.price}}
+                {% else %}
+                    <strong>There are no available products!</strong>
+                {% endif %}
+                </br>
+                <a class="btn btn-danger" href="{% url 'myapp:products' %}">Back</a>
+            </div>
+            <div class="col">
+                <h1>Place Order:</h1>
+                <div>
+                    <form action="../myapp/placeorder" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Client Name:</label>
+                            {{ form.Client }}
+                        </div>
+    {#                   {% for choice in form.Client %}#}
+    {#                      <span class="radio">{{ choice.tag }}</span>#}
+    {#                      {{ choice.choice_label }}#}
+    {#                       <br/>#}
+    {#                   {% endfor %}#}
+                        <div class="form-group">
+                            <label class="col-form-label">Product:</label>
+                                {{ form.Product }}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Quantity:</label>
+                                {{ form.num_units }}
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Submit" class="save btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}

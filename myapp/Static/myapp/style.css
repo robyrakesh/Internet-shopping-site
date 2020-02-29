@@ -1,0 +1,17 @@
+h1{
+    background-color: blueviolet;
+    text-decoration-color: aqua;
+    font-size: 20px;
+}
+
+
+.hbar1 {
+ display: inline;
+ margin: 15px;
+}
+
+.my-class{
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}

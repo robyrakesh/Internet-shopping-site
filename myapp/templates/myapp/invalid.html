@@ -1,0 +1,19 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Invalid Login!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+             <div class="col"></div>
+             <div class="col">
+                 <strong>Username and Password does not match</strong> <br>
+                 <a class="btn btn-secondary" href="{% url 'myapp:login'%}" value="">Back to Login</a>
+             </div>
+             <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}

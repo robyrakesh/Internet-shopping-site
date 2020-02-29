@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Category Details!{% endblock %}
+<h1>
+    {% block myhdg %}
+        Hello {{ client.first_name }}
+    {% endblock %}
+</h1>
+{% block body_block %}
+    <body>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                {% if category %}
+                {% for cat in category %}
+                    <h4>Name: {{ cat.name }}</h4>
+                    <h4>Warehouse: {{ cat.warehouse }}</h4>
+                {% endfor %}
+                {% else %}
+                    <strong>There are no available categories!</strong>
+                {% endif %}
+                {% if products %}
+                    <ol class="list-group">
+                    {% for p in products %}
+                        <li class="list-group-item">{{ p.name }}</li>
+                    {% endfor %}
+                    </ol>
+                {% else %}
+                    <strong>There are no available products!</strong>
+                {% endif %}
+                </br>
+                <a class="btn btn-danger" href="{% url 'myapp:index' %}">Back</a>
+            </div>
+            <div class="col"></div>
+        </div>
+    </body>
+{% endblock %}
